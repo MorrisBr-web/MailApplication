@@ -20,7 +20,6 @@ public class Login {
     private final int width = 450;
     private final int height = 600;
 
-
     {
         window = new Window();
         nickName = new JTextField();
@@ -45,28 +44,42 @@ public class Login {
         helpMenu.add(subPortMenu);
 
         //Declare location&size for Login Textfields
-        texfieldNames[0] = new JLabel("Nickname");
-        texfieldNames[0].setForeground(Color.WHITE);
-        texfieldNames[0].setBounds(100,10,100,20);
+        declareLabels("Nickname",0);
+        nickName.setBounds(100, 30, 200, 30);
 
-        nickName.setBounds(100, 40, 200, 30);
-        /*
-        emailAddress.setBounds();
-        smtpAddress.setBounds();
-        smtpPort.setBounds();
-        passwordText.setBounds();
-        */
+        declareLabels("Emailaddress",1);
+        emailAddress.setBounds(100,90,200,30);
+
+        declareLabels("SmptAddress",2);
+        smtpAddress.setBounds(100,90+60,200,30);
+
+        declareLabels("SmptPort",3);
+        smtpPort.setBounds(100,90+120,200,30);
+
+        declareLabels("Password",4);
+        passwordText.setBounds(100,90+180,200,30);
 
         //Add all components
-        for (int i = 0; i < texfieldNames.length; i++) {
-            if(i==1) break;
-            window.add(texfieldNames[i]);
+        for (JLabel texfieldName : texfieldNames) {
+            window.add(texfieldName);
         }
         window.add(nickName);
         window.add(emailAddress);
         window.add(smtpAddress);
         window.add(smtpPort);
         window.add(passwordText);
+    }
+
+    private void declareLabels(String name, int index) {
+        if(index != 0) {
+            texfieldNames[index] = new JLabel(name);
+            texfieldNames[index].setForeground(Color.WHITE);
+            texfieldNames[index].setBounds(100, index*(60)+10, 100, 20);
+        }else{
+            texfieldNames[index] = new JLabel(name);
+            texfieldNames[index].setForeground(Color.WHITE);
+            texfieldNames[index].setBounds(100, 10, 100, 20);
+        }
     }
 
     private void portListing() {
