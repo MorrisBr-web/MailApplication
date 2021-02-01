@@ -5,19 +5,17 @@ import java.util.*;
 /**
  * 
  */
-public class Application extends Window {
+public class Application {
 
-    /**
-     * Default constructor
-     */
+    private Window window;
+
     public Application() {
     }
 
-    /**
-     * 
-     */
+
     public void setSize() {
-        // TODO implement here
+
+
     }
 
 }
