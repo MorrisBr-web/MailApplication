@@ -2,6 +2,8 @@ package app.email.gui;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Login {
@@ -46,13 +48,20 @@ public class Login {
         });
         init();
         portListing();
-
     }
 
     private void init() {
+
         //Button
         button.setText("login");
         button.setBounds(200-75/2,90+180+60,75,25);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                app.email.connection.Login login = new app.email.connection.Login();
+                login.loginToAccount(smtpAddress.getText(), smtpPort.getText(),emailAddress.getText(),passwordText.getText());
+            }
+        });
 
         //Frameicon
         window.getFrame().setIconImage(icon.getImage());
@@ -108,6 +117,22 @@ public class Login {
             //TODO Help for port list
             System.out.println("Help Menu");
         });
+    }
+
+    public String getNickname() {
+        return nickName.getText();
+    }
+    public String getEmailaddress() {
+        return emailAddress.getText();
+    }
+    public String getPassword() {
+        return passwordText.getText();
+    }
+    public String getSmtpaddress() {
+        return smtpAddress.getText();
+    }
+    public String getSmtpPort() {
+        return smtpPort.getText();
     }
 
 }
