@@ -6,21 +6,23 @@ import java.awt.Color;
 
 public class Login {
 
-    private final JLabel[] texfieldNames = new JLabel[5];
+    private ImageIcon icon;
+    private final Window window;
     private final JTextField nickName;
     private final JTextField emailAddress;
     private final JTextField smtpAddress;
     private final JTextField smtpPort;
     private final JPasswordField passwordText;
+    private final JLabel[] textfieldNames = new JLabel[5];
     private final JMenuBar menuBar;
     private final JMenu helpMenu;
     private final JMenuItem subPortMenu;
-    private final Window window;
 
     private final int width = 450;
     private final int height = 600;
 
     {
+        icon = new ImageIcon("src/main/resources/icons8_key_64px.png");
         window = new Window();
         nickName = new JTextField();
         emailAddress = new JTextField();
@@ -35,9 +37,11 @@ public class Login {
     public Login() {
         window.createWin("Login Window", width,height);
         init();
+        portListing();
     }
 
     private void init() {
+        window.getFrame().setIconImage(icon.getImage());
         //Menu System
         window.getFrame().setJMenuBar(menuBar);
         menuBar.add(helpMenu);
@@ -50,17 +54,18 @@ public class Login {
         declareLabels("Emailaddress",1);
         emailAddress.setBounds(100,90,200,30);
 
-        declareLabels("SmptAddress",2);
-        smtpAddress.setBounds(100,90+60,200,30);
+        declareLabels("Password",2);
+        passwordText.setBounds(100,90+60,200,30);
 
-        declareLabels("SmptPort",3);
-        smtpPort.setBounds(100,90+120,200,30);
+        declareLabels("SmptAddress",3);
+        smtpAddress.setBounds(100,90+120,200,30);
 
-        declareLabels("Password",4);
-        passwordText.setBounds(100,90+180,200,30);
+        declareLabels("SmptPort",4);
+        smtpPort.setBounds(100,90+180,200,30);
+
 
         //Add all components
-        for (JLabel texfieldName : texfieldNames) {
+        for (JLabel texfieldName : textfieldNames) {
             window.add(texfieldName);
         }
         window.add(nickName);
@@ -72,19 +77,20 @@ public class Login {
 
     private void declareLabels(String name, int index) {
         if(index != 0) {
-            texfieldNames[index] = new JLabel(name);
-            texfieldNames[index].setForeground(Color.WHITE);
-            texfieldNames[index].setBounds(100, index*(60)+10, 100, 20);
+            textfieldNames[index] = new JLabel(name);
+            textfieldNames[index].setForeground(Color.WHITE);
+            textfieldNames[index].setBounds(100, index*(60)+10, 100, 20);
         }else{
-            texfieldNames[index] = new JLabel(name);
-            texfieldNames[index].setForeground(Color.WHITE);
-            texfieldNames[index].setBounds(100, 10, 100, 20);
+            textfieldNames[index] = new JLabel(name);
+            textfieldNames[index].setForeground(Color.WHITE);
+            textfieldNames[index].setBounds(100, 10, 100, 20);
         }
     }
 
     private void portListing() {
         subPortMenu.addActionListener(e -> {
             //TODO Help for port list
+            System.out.println("Help Menu");
         });
     }
 }
