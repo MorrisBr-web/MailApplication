@@ -1,5 +1,7 @@
 package app.email.gui;
 
+import app.email.connection.EmailSender;
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -58,8 +60,11 @@ public class Login {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                app.email.connection.Login login = new app.email.connection.Login();
-                login.loginToAccount(smtpAddress.getText(), smtpPort.getText(),emailAddress.getText(),passwordText.getText());
+
+                EmailSender s = new EmailSender();
+                s.loginToAccount(getSmtpaddress(),getSmtpPort(), getEmailaddress(), getPassword());
+                s.sendEmail(s.getSession(),getNickname(), getEmailaddress(), getEmailaddress(), "Your new Mail Programm","Welcome to Mail app");
+
             }
         });
 

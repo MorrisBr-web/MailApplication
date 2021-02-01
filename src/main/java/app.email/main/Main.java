@@ -1,5 +1,6 @@
 package app.email.main;
 
+import app.email.connection.EmailSender;
 import app.email.gui.Login;
 
 public class Main {
@@ -8,7 +9,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Login();
+       Login l = new Login();
+
     }
 
 }
