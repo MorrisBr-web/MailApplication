@@ -18,12 +18,12 @@ public class Window extends JPanel {
     public void createWin(String name,int width, int height) {
         this.setBackground(Color.darkGray);
         this.setLayout(null);
+        this.setVisible(true);
         frame = new JFrame(name);
-        frame.add(this);
         frame.setSize(width,height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame.add(this);
     }
 
     public JFrame getFrame() {

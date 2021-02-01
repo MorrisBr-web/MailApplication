@@ -14,6 +14,7 @@ public class Login {
     private final JTextField smtpPort;
     private final JPasswordField passwordText;
     private final JLabel[] textfieldNames = new JLabel[5];
+    private final JButton button;
     private final JMenuBar menuBar;
     private final JMenu helpMenu;
     private final JMenuItem subPortMenu;
@@ -29,6 +30,7 @@ public class Login {
         smtpAddress = new JTextField();
         smtpPort = new JTextField();
         passwordText = new JPasswordField();
+        button = new JButton();
         menuBar = new JMenuBar();
         helpMenu = new JMenu("Help");
         subPortMenu = new JMenuItem("PortList");
@@ -36,16 +38,27 @@ public class Login {
 
     public Login() {
         window.createWin("Login Window", width,height);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                window.getFrame().setVisible(true);
+            }
+        });
         init();
         portListing();
+
     }
 
     private void init() {
+        //Button
+        button.setText("login");
+        button.setBounds(200-75/2,90+180+60,75,25);
+
+        //Frameicon
         window.getFrame().setIconImage(icon.getImage());
+
         //Menu System
         window.getFrame().setJMenuBar(menuBar);
-        menuBar.add(helpMenu);
-        helpMenu.add(subPortMenu);
 
         //Declare location&size for Login Textfields
         declareLabels("Nickname",0);
@@ -68,6 +81,9 @@ public class Login {
         for (JLabel texfieldName : textfieldNames) {
             window.add(texfieldName);
         }
+        menuBar.add(helpMenu);
+        helpMenu.add(subPortMenu);
+        window.add(button);
         window.add(nickName);
         window.add(emailAddress);
         window.add(smtpAddress);
@@ -93,4 +109,5 @@ public class Login {
             System.out.println("Help Menu");
         });
     }
+
 }
